@@ -15,14 +15,16 @@ export default function Home() {
     <div>
       <Header />
       <h1>Fibre fantasies</h1>
-      {isRegistered ? <Login /> : <Register />}
-      <button onClick={handleClick}>
-        <div>
-          {isRegistered
-            ? "I need to make an account"
-            : "I've registered before"}
-        </div>
-      </button>
+      <div>
+        {isRegistered ? <Login /> : <Register />}
+        <button onClick={handleClick}>
+          <div>
+            {isRegistered
+              ? "I need to make an account"
+              : "I've registered before"}
+          </div>
+        </button>
+      </div>
     </div>
   );
 }
