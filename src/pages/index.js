@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
-import Header from "./header/page";
-import Login from "./login/page";
-import Register from "./register/page";
+import { useState } from "react";
+import Header from "./homepage/header";
+import Login from "./login";
+import Register from "./register";
 
 export default function Home() {
-  const [isRegistered, setIsRegistered] = React.useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   function handleClick() {
     setIsRegistered((oldValue) => !oldValue);
