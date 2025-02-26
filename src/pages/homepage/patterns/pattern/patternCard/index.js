@@ -1,4 +1,5 @@
 "use client";
+import "@/app/page.module.css";
 
 export default function PatternCard({
   pattern,

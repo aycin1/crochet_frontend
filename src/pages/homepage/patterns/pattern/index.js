@@ -1,11 +1,13 @@
 "use-client";
+import "@/app/page.module.css";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import PatternCard from "./patternCard";
-import PatternPage from "./patternPage/[id]";
 
 export default function Pattern({ patternID, thumbnail, title, chosenList }) {
   const [chosenPattern, setChosenPattern] = useState(null);
   const [patternAPI, setPatternAPI] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchData() {
@@ -39,13 +41,15 @@ export default function Pattern({ patternID, thumbnail, title, chosenList }) {
     return res;
   }
 
-  function handleSubmit() {
-    setChosenPattern(patternID);
-  }
-
   function renderPatternPage() {
-    return (
-      <PatternPage pattern={patternAPI} thumbnail={thumbnail} title={title} />
+    return router.push(
+      {
+        pathname: `/homepage/patterns/pattern/patternPage/${patternID}`,
+        query: {
+          pattern: JSON.stringify(patternAPI),
+        },
+      },
+      `/homepage/patterns/pattern/patternPage/${patternID}`
     );
   }
 
@@ -55,6 +59,7 @@ export default function Pattern({ patternID, thumbnail, title, chosenList }) {
         pattern={patternAPI}
         thumbnail={thumbnail}
         title={title}
+        chosenPattern={chosenPattern}
         setChosenPattern={setChosenPattern}
       />
     );
@@ -62,13 +67,10 @@ export default function Pattern({ patternID, thumbnail, title, chosenList }) {
 
   return (
     <div>
-      {chosenPattern ? (
-        renderPatternPage()
-      ) : chosenList && patternAPI ? (
-        renderPatternCard()
-      ) : (
-        <p>Loading...</p>
-      )}
+      <div>
+        {chosenList && patternAPI ? renderPatternCard() : <p>Loading...</p>}
+      </div>
+      <div>{chosenPattern ? renderPatternPage() : null}</div>
     </div>
   );
 }

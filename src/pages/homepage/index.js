@@ -1,13 +1,13 @@
 "use client";
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Header from "./header";
 import Lists from "./lists";
 import Patterns from "./patterns";
 
 export default function Homepage() {
-  const [searchField, setSearchField] = useState(null);
   const [patternIDs, setPatternIDs] = useState([]);
-
   const [lists, setLists] = useState(null);
   const [chosenList, setChosenList] = useState(false);
 
@@ -75,32 +75,24 @@ export default function Homepage() {
 
   return (
     <div>
+      <Header />
       {
-        // <Lists
-        //   listsPromise={lists}
-        //   setPatternIDs={setPatternIDs}
-        //   setChosenList={setChosenList}
-        // />
+        <Lists
+          listsPromise={lists}
+          setPatternIDs={setPatternIDs}
+          setChosenList={setChosenList}
+        />
       }
-      {
-        chosenList ? (
-          <Patterns
-            patternIDs={patternIDs}
-            thumbnail={thumbnail}
-            title={title}
-            chosenList={chosenList}
-          ></Patterns>
-        ) : (
-          <Lists
-            listsPromise={lists}
-            setPatternIDs={setPatternIDs}
-            setChosenList={setChosenList}
-          />
-        )
-        // ) : (
-        //   "Select a list"
-        // )
-      }
+      {chosenList ? (
+        <Patterns
+          patternIDs={patternIDs}
+          thumbnail={thumbnail}
+          title={title}
+          chosenList={chosenList}
+        ></Patterns>
+      ) : (
+        "Select a list"
+      )}
     </div>
   );
 }
