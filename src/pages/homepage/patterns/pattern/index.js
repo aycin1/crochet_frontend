@@ -4,10 +4,10 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import PatternCard from "./patternCard";
 
-export default function Pattern({ patternID, thumbnail, title, chosenList }) {
+export default function Pattern({ patternID, patternIDs }) {
+  const router = useRouter();
   const [chosenPattern, setChosenPattern] = useState(null);
   const [patternAPI, setPatternAPI] = useState(null);
-  const router = useRouter();
 
   useEffect(() => {
     async function fetchData() {
@@ -15,11 +15,10 @@ export default function Pattern({ patternID, thumbnail, title, chosenList }) {
       if (response) setPatternAPI(response.pattern);
     }
     fetchData();
-  }, [chosenList]);
+  }, [patternIDs]);
 
   async function apiCall() {
     let res;
-
     if (patternID) {
       try {
         const request = await fetch(
@@ -57,8 +56,6 @@ export default function Pattern({ patternID, thumbnail, title, chosenList }) {
     return (
       <PatternCard
         pattern={patternAPI}
-        thumbnail={thumbnail}
-        title={title}
         chosenPattern={chosenPattern}
         setChosenPattern={setChosenPattern}
       />
@@ -67,9 +64,7 @@ export default function Pattern({ patternID, thumbnail, title, chosenList }) {
 
   return (
     <div>
-      <div>
-        {chosenList && patternAPI ? renderPatternCard() : <p>Loading...</p>}
-      </div>
+      <div>{patternAPI ? renderPatternCard() : null}</div>
       <div>{chosenPattern ? renderPatternPage() : null}</div>
     </div>
   );

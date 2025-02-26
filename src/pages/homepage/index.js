@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import Header from "./header";
 import Lists from "./lists";
@@ -24,72 +23,12 @@ export default function Homepage() {
     if (chosenList) setPatternIDs(lists[chosenList]);
   }, [chosenList]);
 
-  function thumbnail(pattern) {
-    if (pattern) {
-      if (!pattern.photos || !pattern.photos[0]) return null;
-      const photoUrl = Object.values(pattern.photos)[0].small2_url;
-      return (
-        <div key={pattern.photos.id}>
-          <Image
-            src={photoUrl}
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ height: "auto", width: "15%" }}
-            alt={`Image of pattern ${pattern.photos.id}`}
-          />
-        </div>
-      );
-    }
-  }
-
-  function title(pattern) {
-    if (pattern) {
-      return (
-        <div>
-          <h3>{pattern.name}</h3>
-        </div>
-      );
-    }
-  }
-
-  async function apiCall() {
-    let res;
-    const username = localStorage.getItem("username");
-    try {
-      const request = await fetch(`http://localhost:2501/home/${username}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const statusCode = request.status;
-      const response = await request.json();
-      res = { response, statusCode };
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      res = { response: {}, statusCode: 500 };
-    }
-    return res;
-  }
-
   return (
     <div>
       <Header />
-      {
-        <Lists
-          listsPromise={lists}
-          setPatternIDs={setPatternIDs}
-          setChosenList={setChosenList}
-        />
-      }
+      {<Lists listsPromise={lists} setChosenList={setChosenList} />}
       {chosenList ? (
-        <Patterns
-          patternIDs={patternIDs}
-          thumbnail={thumbnail}
-          title={title}
-          chosenList={chosenList}
-        ></Patterns>
+        <Patterns patternIDs={patternIDs} chosenList={chosenList}></Patterns>
       ) : (
         "Select a list"
       )}
