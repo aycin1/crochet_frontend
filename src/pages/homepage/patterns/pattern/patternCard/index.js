@@ -1,6 +1,7 @@
 "use client";
 import "@/app/page.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function PatternCard({ pattern, setChosenPattern }) {
   function thumbnail(pattern) {
@@ -32,11 +33,22 @@ export default function PatternCard({ pattern, setChosenPattern }) {
     }
   }
 
+  function handleAddToList() {}
+
   return (
     <div className="pattern-card-container">
       <div>{title(pattern)}</div>
       <div className="pattern-photo">{thumbnail(pattern)}</div>
-      <button onClick={() => setChosenPattern(pattern)}>Go to pattern</button>
+      <button onClick={() => handleAddToList()}>+</button>
+      <Link
+        href={{
+          pathname: `/homepage/patterns/pattern/patternPage/${pattern.id}`,
+          query: { pattern: JSON.stringify(pattern) },
+        }}
+        as={`/homepage/patterns/pattern/patternPage/${pattern.id}`}
+      >
+        <button>Go to pattern</button>
+      </Link>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 import Form from "next/form";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -9,11 +9,6 @@ export default function LoginForm() {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState("");
   const [responseMessage, setResponseMessage] = useState("");
-  const [username, setUsername] = useState("");
-
-  useEffect(() => {
-    if (username) localStorage.setItem("username", username);
-  }, [username]);
 
   async function logUserIn(credentials) {
     const request = await fetch("http://localhost:2501/login", {
@@ -32,10 +27,16 @@ export default function LoginForm() {
     return { response, statusCode };
   }
 
-  async function handleSubmit() {
+  async function handleSubmit(e) {
+    e.preventDefault();
     const result = await logUserIn(credentials);
     if (result.response.message) setResponseMessage(result.response.message);
-    if (result.statusCode === 201) router.push(`/homepage`);
+    if (result.response.accessToken) {
+      window.localStorage.setItem("accessToken", result.response.accessToken);
+    }
+    if (result.statusCode === 201) {
+      router.push(`/homepage`);
+    }
   }
 
   function handleChange(e) {
@@ -48,8 +49,6 @@ export default function LoginForm() {
   return (
     <Form
       onSubmit={(e) => {
-        e.preventDefault();
-        setUsername(e.target.username.value);
         handleSubmit(e);
       }}
     >

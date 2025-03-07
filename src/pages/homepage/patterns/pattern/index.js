@@ -1,12 +1,9 @@
 "use-client";
 import "@/app/page.module.css";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import PatternCard from "./patternCard";
 
-export default function Pattern({ patternID, patternIDs }) {
-  const router = useRouter();
-  const [chosenPattern, setChosenPattern] = useState(null);
+export default function Pattern({ patternID }) {
   const [patternAPI, setPatternAPI] = useState(null);
 
   useEffect(() => {
@@ -15,7 +12,7 @@ export default function Pattern({ patternID, patternIDs }) {
       if (response) setPatternAPI(response.pattern);
     }
     fetchData();
-  }, [patternIDs]);
+  }, [patternID]);
 
   async function apiCall() {
     let res;
@@ -40,32 +37,14 @@ export default function Pattern({ patternID, patternIDs }) {
     return res;
   }
 
-  function renderPatternPage() {
-    return router.push(
-      {
-        pathname: `/homepage/patterns/pattern/patternPage/${patternID}`,
-        query: {
-          pattern: JSON.stringify(patternAPI),
-        },
-      },
-      `/homepage/patterns/pattern/patternPage/${patternID}`
-    );
-  }
-
   function renderPatternCard() {
-    return (
-      <PatternCard
-        pattern={patternAPI}
-        chosenPattern={chosenPattern}
-        setChosenPattern={setChosenPattern}
-      />
-    );
+    return <PatternCard pattern={patternAPI} />;
   }
 
+  // "Rendering" needs to be changed to the loading pattern cards
   return (
     <div>
-      <div>{patternAPI ? renderPatternCard() : null}</div>
-      <div>{chosenPattern ? renderPatternPage() : null}</div>
+      <div>{patternAPI ? renderPatternCard() : <p>Rendering...</p>}</div>
     </div>
   );
 }

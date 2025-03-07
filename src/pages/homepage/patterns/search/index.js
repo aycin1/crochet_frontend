@@ -17,7 +17,7 @@ export default function Search() {
       }
       fetchRandoms();
     }
-  }, []);
+  }, [router.query]);
 
   useEffect(() => {
     if (router.query.searchField) {
@@ -27,7 +27,7 @@ export default function Search() {
       }
       fetchSearchResults();
     }
-  }, [router.query.searchField]);
+  }, [router.query]);
 
   async function getRandomPatterns() {
     let res;
@@ -55,7 +55,6 @@ export default function Search() {
   async function searchPatterns() {
     let url = "http://localhost:2501/patterns/refine/";
     if (router.query.searchField) url += `query=${router.query.searchField}`;
-
     let res;
     try {
       const request = await fetch(url, {
