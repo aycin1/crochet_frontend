@@ -1,11 +1,12 @@
 "use server";
+import { getPattern } from "@/lib/patternAPI";
 import Image from "next/image";
 
-export default async function PatternPage() {
-  // const [pattern, setPattern] = useState();
-  // const [properties, setProperties] = useState();
+export default async function PatternPage({ params }) {
+  const patternID = await params;
+  const pattern = (await getPattern(patternID.id)).pattern;
 
-  function setPropertiesFunction(pattern) {
+  function setProperties(pattern) {
     return {
       name: pattern.name,
       notes: pattern.notes,
@@ -21,6 +22,8 @@ export default async function PatternPage() {
       author: pattern.pattern_author.name,
     };
   }
+
+  const properties = setProperties(pattern);
 
   function setPatternUrl() {
     return pattern.url === "" && pattern.printings[0].pattern_source.url !== ""
@@ -63,7 +66,7 @@ export default async function PatternPage() {
             width={0}
             height={0}
             sizes="100vw"
-            style={{ height: "auto", width: "30%" }}
+            style={{ height: "auto", width: "50%" }}
             alt={`Image of pattern ${pattern.photos.id}`}
           />
         </div>

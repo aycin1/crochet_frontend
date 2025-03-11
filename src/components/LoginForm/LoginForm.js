@@ -15,7 +15,7 @@ export default function LoginForm() {
     const response = await logUserIn(credentials);
 
     if (response?.message.includes("successful")) {
-      router.push(`/homepage`);
+      router.push(`/`);
     }
   }
 

@@ -1,5 +1,5 @@
 "use client";
-import ListDropdown from "@/components/ListDropdown";
+import ListDropdown from "@/components/ListDropdown/ListDropdown";
 import PatternCard from "@/components/PatternCard/PatternCard";
 import { getRandomPatterns, searchPatterns } from "@/lib/patternAPI";
 import { useEffect, useState } from "react";

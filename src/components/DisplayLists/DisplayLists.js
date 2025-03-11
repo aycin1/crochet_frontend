@@ -1,6 +1,7 @@
 "use client";
 // import { useState } from "react";
-import ListButtons from "./ListButtons";
+import ListButtons from "../ListButtons/ListButtons";
+import styles from "./styles.module.css";
 
 export default function DisplayLists({ lists, setChosenList }) {
   const listTitles = Object.keys(lists).map((list) => {
@@ -17,5 +18,5 @@ export default function DisplayLists({ lists, setChosenList }) {
     );
   });
 
-  return <div>{getListButtons}</div>;
+  return <div className={styles.listButtons}>{getListButtons}</div>;
 }

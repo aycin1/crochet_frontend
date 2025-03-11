@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 
-export default function PatternCard({ chosenList, patternID }) {
+export default function PatternCard({ patternID }) {
   const [pattern, setPattern] = useState();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function PatternCard({ chosenList, patternID }) {
         return <p>Image not found, please try again</p>;
       const photoUrl = Object.values(pattern.photos)[0].small_url;
       return (
-        <Link href={`/homepage/pattern/${patternID}`}>
+        <Link href={`/pattern/${patternID}`}>
           <div key={pattern.photos.id} className={styles.patternPhoto}>
             <Image
               src={photoUrl}

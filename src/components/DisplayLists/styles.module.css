@@ -1,0 +1,6 @@
+.listButtons {
+  display: flex;
+  justify-content: space-around;
+  color: rgb(31, 68, 31);
+  background-color: rgb(198, 231, 220);
+}

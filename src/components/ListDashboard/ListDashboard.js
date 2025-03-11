@@ -1,11 +1,13 @@
 "use client";
-import DisplayLists from "@/components/DisplayLists";
+import DisplayLists from "@/components/DisplayLists/DisplayLists";
 import PatternCard from "@/components/PatternCard/PatternCard";
 import { getLists } from "@/lib/listsAPI";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import styles from "./styles.module.css";
+import { createPatterns } from "@/lib/createPatterns";
 
-export default function Lists() {
+export default function ListDashboard() {
   const [chosenList, setChosenList] = useState();
   const [lists, setLists] = useState();
 
@@ -16,28 +18,14 @@ export default function Lists() {
     fetchLists();
   }, [chosenList]);
 
-  function createPatterns() {
-    const patterns = lists[chosenList];
-    if (patterns) {
-      return patterns.map((pattern) => {
-        return (
-          <div key={pattern.pattern_id}>
-            <PatternCard
-              chosenList={chosenList}
-              patternID={pattern.pattern_id}
-            ></PatternCard>
-          </div>
-        );
-      });
-    }
-  }
-
   function renderSearchButton() {
     return (
-      <div>
-        <div>This list is empty, add patterns to see them here!</div>
-        <Link href="/homepage/search">
-          <button>Go to search page</button>
+      <div className={styles.searchContainer}>
+        <div className={styles.searchText}>
+          This list is empty, add patterns to see them here!
+        </div>
+        <Link href="/search">
+          <button className={styles.button}>Go to search page</button>
         </Link>
       </div>
     );
@@ -51,7 +39,7 @@ export default function Lists() {
         "Loading lists"
       )}
       {chosenList && lists[chosenList].length
-        ? createPatterns()
+        ? createPatterns(lists[chosenList])
         : chosenList
         ? renderSearchButton()
         : "Please select a list"}
