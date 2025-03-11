@@ -1,0 +1,13 @@
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLinks {
+  display: flex;
+}
+
+.links {
+  padding: 25px;
+}
