@@ -2,10 +2,11 @@
   display: flex;
   align-content: space-between;
   padding: 10pt;
+  flex-direction: row;
 }
 
 .listCard {
   align-content: space-between;
   background-color: rgb(157, 214, 181);
-  padding: 15pt;
+  padding: 10pt;
 }

@@ -1,4 +1,9 @@
-.listButtons {
+.buttonsContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.button {
   display: flex;
   justify-content: space-around;
   color: rgb(31, 68, 31);

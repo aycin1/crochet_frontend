@@ -1,7 +1,8 @@
 "use client";
-import CreateLists from "@/components/CreateLists/CreateLists";
+import CreateListCards from "@/components/CreateListCards/CreateListCards";
 import { getLists } from "@/lib/listsAPI";
 import { useEffect, useState } from "react";
+import styles from "./styles.module.css";
 
 export default function Lists() {
   const [lists, setLists] = useState();
@@ -14,5 +15,9 @@ export default function Lists() {
     fetchLists();
   }, []);
 
-  return <CreateLists lists={lists}></CreateLists>;
+  return (
+    <div className={styles.listCards}>
+      <CreateListCards lists={lists}></CreateListCards>
+    </div>
+  );
 }

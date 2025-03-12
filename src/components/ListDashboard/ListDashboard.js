@@ -1,9 +1,10 @@
 "use client";
-import DisplayLists from "@/components/DisplayListButtons/DisplayListButtons";
+import DisplayListButtons from "@/components/DisplayListButtons/DisplayListButtons";
+import SearchButton from "@/components/SearchButton/SearchButton";
 import { createPatterns } from "@/lib/createPatterns";
 import { getLists } from "@/lib/listsAPI";
-import { renderSearchButton } from "@/lib/renderSearchButton/renderSearchButton";
 import { useEffect, useState } from "react";
+import styles from "./styles.module.css";
 
 export default function ListDashboard() {
   const [chosenList, setChosenList] = useState();
@@ -16,18 +17,33 @@ export default function ListDashboard() {
     fetchLists();
   }, [chosenList]);
 
+  function patternsWithSearchButton() {
+    return (
+      <div className={styles.listCardContainer}>
+        <div className={styles.patternCards}>
+          {createPatterns(lists[chosenList], "lists", chosenList)}
+        </div>
+        <div className={styles.searchButton}>
+          <SearchButton text="Add more patterns here" />
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div>
+    <div className={styles.listButtons}>
       {lists ? (
-        <DisplayLists lists={lists} setChosenList={setChosenList} />
+        <DisplayListButtons lists={lists} setChosenList={setChosenList} />
       ) : (
         "Loading lists"
       )}
-      {chosenList && lists[chosenList].length
-        ? createPatterns(lists[chosenList])
-        : chosenList
-        ? renderSearchButton()
-        : "Please select a list"}
+      {chosenList && lists[chosenList].length ? (
+        patternsWithSearchButton()
+      ) : chosenList ? (
+        <SearchButton text="This list is empty, click here to search patterns!" />
+      ) : (
+        "Please select a list"
+      )}
     </div>
   );
 }

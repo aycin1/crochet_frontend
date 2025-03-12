@@ -1,0 +1,14 @@
+.listButtons {
+  color: rgb(31, 68, 31);
+  background-color: rgb(198, 231, 220);
+}
+
+/* .listCardContainer {
+} */
+
+.patternCards {
+  display: flex;
+}
+
+/* .searchButton {
+} */

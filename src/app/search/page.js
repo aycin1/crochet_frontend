@@ -1,6 +1,5 @@
 "use client";
-import ListDropdown from "@/components/ListDropdown/ListDropdown";
-import PatternCard from "@/components/PatternCard/PatternCard";
+import { createPatterns } from "@/lib/createPatterns";
 import { getRandomPatterns, searchPatterns } from "@/lib/patternAPI";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
@@ -28,19 +27,6 @@ export default function Search() {
     }
   }
 
-  function createPatterns(patterns) {
-    if (patterns) {
-      return patterns.map((pattern) => {
-        return (
-          <div key={pattern.id} className={styles.patternCard}>
-            <PatternCard patternID={pattern.id}></PatternCard>
-            <ListDropdown patternID={pattern.id}></ListDropdown>
-          </div>
-        );
-      });
-    }
-  }
-
   return (
     <div>
       <input
@@ -51,9 +37,9 @@ export default function Search() {
       <button onClick={(e) => handleClick(e)}>Search</button>
       <div className={styles.container}>
         {searchField
-          ? createPatterns(searchResults)
+          ? createPatterns(searchResults, "search")
           : randomiser
-          ? createPatterns(randomiser)
+          ? createPatterns(randomiser, "search")
           : "Could not fetch"}
       </div>
     </div>

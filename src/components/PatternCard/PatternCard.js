@@ -47,7 +47,7 @@ export default function PatternCard({ patternID }) {
   }
 
   return (
-    <div className={styles.patternCard}>
+    <div className={styles.patternContainer}>
       <h5>{title()}</h5>
       {thumbnail()}
     </div>
