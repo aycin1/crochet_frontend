@@ -50,7 +50,6 @@ export default function ListDropdown({ patternID }) {
 
   async function handleChange(e) {
     const desiredList = e.value;
-
     if (lists !== undefined || lists !== null) {
       const isInDesiredList = lists[desiredList].find(
         (pattern) => pattern.pattern_id === patternID
@@ -61,8 +60,6 @@ export default function ListDropdown({ patternID }) {
         }
       });
       const inAnyList = isInAnyList.find((list) => list !== undefined);
-
-      console.log(isInDesiredList);
       return inAnyList === undefined
         ? await apiCall("POST", { pattern_id: patternID, list: desiredList })
         : inAnyList !== undefined && isInDesiredList === undefined
@@ -78,7 +75,8 @@ export default function ListDropdown({ patternID }) {
         placeholder="Add to list..."
         onChange={(e) => handleChange(e)}
       />
-      <div>{message ? <p>{message}</p> : null}</div>
+      {message ? <p>{message}</p> : null}
+      {error ? <p>{error}</p> : null}
     </div>
   );
 }

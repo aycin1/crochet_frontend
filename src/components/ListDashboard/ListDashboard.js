@@ -1,11 +1,9 @@
 "use client";
-import DisplayLists from "@/components/DisplayLists/DisplayLists";
-import PatternCard from "@/components/PatternCard/PatternCard";
-import { getLists } from "@/lib/listsAPI";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import styles from "./styles.module.css";
+import DisplayLists from "@/components/DisplayListButtons/DisplayListButtons";
 import { createPatterns } from "@/lib/createPatterns";
+import { getLists } from "@/lib/listsAPI";
+import { renderSearchButton } from "@/lib/renderSearchButton/renderSearchButton";
+import { useEffect, useState } from "react";
 
 export default function ListDashboard() {
   const [chosenList, setChosenList] = useState();
@@ -17,19 +15,6 @@ export default function ListDashboard() {
     }
     fetchLists();
   }, [chosenList]);
-
-  function renderSearchButton() {
-    return (
-      <div className={styles.searchContainer}>
-        <div className={styles.searchText}>
-          This list is empty, add patterns to see them here!
-        </div>
-        <Link href="/search">
-          <button className={styles.button}>Go to search page</button>
-        </Link>
-      </div>
-    );
-  }
 
   return (
     <div>

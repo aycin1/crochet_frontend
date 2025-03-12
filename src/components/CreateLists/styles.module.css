@@ -1,0 +1,11 @@
+.patternCards {
+  display: flex;
+  align-content: space-between;
+  padding: 10pt;
+}
+
+.listCard {
+  align-content: space-between;
+  background-color: rgb(157, 214, 181);
+  padding: 15pt;
+}

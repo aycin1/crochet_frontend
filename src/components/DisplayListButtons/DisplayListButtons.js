@@ -3,7 +3,7 @@
 import ListButtons from "../ListButtons/ListButtons";
 import styles from "./styles.module.css";
 
-export default function DisplayLists({ lists, setChosenList }) {
+export default function DisplayListButtons({ lists, setChosenList }) {
   const listTitles = Object.keys(lists).map((list) => {
     return list;
   });
