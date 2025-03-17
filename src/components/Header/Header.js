@@ -1,4 +1,5 @@
 "use client";
+import { useAppSelector } from "@/lib/hooks";
 import Link from "next/link";
 import styles from "./styles.module.css";
 
@@ -9,6 +10,9 @@ export default function Header() {
         <h2 className={styles.headerTitle}>Fibre fantasies</h2>
       </Link>
       <div className={styles.headerLinks}>
+        <div className={styles.links}>
+          <Link href={`/profile`}>Profile</Link>
+        </div>
         <div className={styles.links}>
           <Link href={"/lists"}>Lists</Link>
         </div>

@@ -1,9 +1,8 @@
 import Posts from "@/components/Posts/Posts";
 import { getPostsForUser } from "@/lib/usersAPI";
 
-export default async function UserProfile({ params }) {
-  const { username } = await params;
-  const { posts } = await getPostsForUser(username);
+export default async function Profile() {
+  const { posts, username } = await getPostsForUser();
 
   return (
     <div>

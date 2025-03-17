@@ -1,0 +1,9 @@
+.posts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post {
+  width: 30%;
+}

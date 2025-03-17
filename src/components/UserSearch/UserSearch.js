@@ -11,7 +11,7 @@ import styles from "./styles.module.css";
 
 export default function UserSearch() {
   const [searchField, setSearchField] = useState();
-  const [searchResults, setSearchResults] = useState();
+  const [foundUser, setFoundUser] = useState();
   const [buttonText, setButtonText] = useState();
   const [message, setMessage] = useState();
 
@@ -30,7 +30,7 @@ export default function UserSearch() {
   async function handleSearchClick(e) {
     e.preventDefault();
     const { username } = await searchUsers(searchField);
-    setSearchResults(username);
+    setFoundUser(username);
   }
 
   async function handleFollowClick(e) {
@@ -48,7 +48,7 @@ export default function UserSearch() {
   function returnSearchResult() {
     return (
       <div>
-        <Link href={`/user/${searchResults}`}>{searchResults}</Link>
+        <Link href={`/user/${foundUser}`}>{foundUser}</Link>
         <button onClick={(e) => handleFollowClick(e)}>{buttonText}</button>
       </div>
     );
@@ -63,9 +63,9 @@ export default function UserSearch() {
           onChange={(e) => setSearchField(e.target.value)}
         />
         <button onClick={(e) => handleSearchClick(e)}>Search</button>
+        <div>{foundUser ? returnSearchResult() : "Click search"}</div>
+        {message ? message : null}
       </div>
-      <div>{searchResults ? returnSearchResult() : "Click search"}</div>
-      {message ? message : null}
     </div>
   );
 }

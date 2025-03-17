@@ -14,3 +14,18 @@ export async function logUserIn(credentials) {
     console.log("Error during fetch:", error);
   }
 }
+
+export async function logUserOut() {
+  try {
+    const response = await fetch("http://localhost:2501/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    return response.status;
+  } catch (error) {
+    console.log("Error during fetch:", error);
+  }
+}

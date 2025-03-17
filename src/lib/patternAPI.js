@@ -28,6 +28,7 @@ export async function getRandomPatterns() {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
     });
     res = await request.json();
   } catch (error) {
@@ -46,6 +47,7 @@ export async function searchPatterns(searchField) {
     const request = await fetch(url, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
     });
     res = await request.json();
   } catch (error) {

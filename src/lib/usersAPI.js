@@ -17,7 +17,7 @@ export async function searchUsers(username) {
 export async function getPostsForUser(username) {
   try {
     const response = await fetch(
-      `http://localhost:2501/users/${username}/account`,
+      `http://localhost:2501/users/profile/${username}`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
