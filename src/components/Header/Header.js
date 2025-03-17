@@ -15,9 +15,9 @@ export default function Header() {
         <div className={styles.links}>
           <Link href={"/search"}>Search</Link>
         </div>
-        {/* <div className={styles.links}>
+        <div className={styles.links}>
           <Link href={"/feed"}>Feed</Link>
-        </div> */}
+        </div>
         <div className={styles.links}>
           <Link href={"/logout"}>Logout</Link>
         </div>

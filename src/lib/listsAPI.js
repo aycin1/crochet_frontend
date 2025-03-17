@@ -1,6 +1,6 @@
 export async function getLists() {
   try {
-    const response = await fetch(`http://localhost:2501/home`, {
+    const response = await fetch(`http://localhost:2501/lists`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -18,7 +18,7 @@ export async function getLists() {
 export async function editList(method, listEdit, setError, setMessage) {
   let res;
   try {
-    const request = await fetch(`http://localhost:2501/home/`, {
+    const request = await fetch(`http://localhost:2501/lists/`, {
       method: method,
       headers: {
         "Content-Type": "application/json",

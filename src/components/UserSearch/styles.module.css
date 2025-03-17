@@ -1,0 +1,9 @@
+.searchUserContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchInput {
+  padding-bottom: 10px;
+}

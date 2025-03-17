@@ -19,8 +19,8 @@ export default function Search() {
     }
   }, [searchResults]);
 
-  async function handleClick(e) {
-    console.log(e);
+  async function handleSubmit(e) {
+    e.preventDefault();
     if (searchField) {
       const results = await searchPatterns(searchField);
       setSearchResults(results);
@@ -34,7 +34,7 @@ export default function Search() {
         placeholder="Search for patterns!"
         onChange={(e) => setSearchField(e.target.value)}
       ></input>
-      <button onClick={(e) => handleClick(e)}>Search</button>
+      <button onClick={(e) => handleSubmit(e)}>Search</button>
       <div className={styles.container}>
         {searchField
           ? createPatterns(searchResults, "search")

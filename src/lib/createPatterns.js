@@ -1,5 +1,5 @@
 import PatternCard from "@/components/PatternCard/PatternCard";
-import RenderDropdown from "@/components/renderDropdown/RenderDropdown";
+import RenderDropdown from "@/components/RenderDropdown/RenderDropdown";
 import styles from "./styles.module.css";
 
 export function createPatterns(patterns, origin, list) {
