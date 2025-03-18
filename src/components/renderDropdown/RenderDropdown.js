@@ -1,13 +1,25 @@
 "use client";
 import AddToListDropdown from "@/components/AddToListDropdown/AddToListDropdown";
 import EditListDropdown from "@/components/EditListDropdown/EditListDropdown";
-import { editList, getLists } from "@/lib/listsAPI";
+import { editList, getListForPattern, getLists } from "@/lib/listsAPI";
 import { useEffect, useState } from "react";
 
-export default function RenderDropdown({ patternID, origin, list }) {
+export default function RenderDropdown({ patternID, list }) {
   const [message, setMessage] = useState();
   const [error, setError] = useState();
   const [lists, setLists] = useState();
+  const [listForPattern, setListForPattern] = useState();
+
+  useEffect(() => {
+    async function fetchList() {
+      if (list === undefined) {
+        setListForPattern(
+          (await getListForPattern(patternID))["listForPattern"]
+        );
+      }
+    }
+    fetchList();
+  }, [patternID]);
 
   useEffect(() => {
     async function fetchLists() {
@@ -44,24 +56,25 @@ export default function RenderDropdown({ patternID, origin, list }) {
     }
   }
 
-  function editOrAddToList(patternID, origin, list) {
+  function editOrAddToList(patternID, list) {
     const options = ["wishlist", "wip", "completed"];
-    if (origin === "search") {
+
+    if (list || listForPattern !== undefined) {
       return (
         <div>
-          <AddToListDropdown
+          <EditListDropdown
             key={patternID}
+            list={list || listForPattern.list}
             options={options}
             handleChange={handleChange}
           />
         </div>
       );
-    } else if (origin === "lists") {
+    } else if (!list || listForPattern === undefined) {
       return (
         <div>
-          <EditListDropdown
+          <AddToListDropdown
             key={patternID}
-            list={list}
             options={options}
             handleChange={handleChange}
           />
@@ -72,7 +85,7 @@ export default function RenderDropdown({ patternID, origin, list }) {
 
   return (
     <div>
-      <div>{editOrAddToList(patternID, origin, list)}</div>
+      <div>{editOrAddToList(patternID, list)}</div>
       <div>{message ? <p>{message}</p> : null}</div>
       <div>{error ? <p>{error}</p> : null}</div>
     </div>

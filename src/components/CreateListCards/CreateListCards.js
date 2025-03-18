@@ -13,7 +13,7 @@ export default function CreateListCards({ lists }) {
             <div key={listTitles[index]} className={styles.listCard}>
               <h4>{listTitles[index]}</h4>
               <div className={styles.patternCards}>
-                {createPatterns(listArr, "lists", listTitles[index])}
+                {createPatterns(listArr, listTitles[index])}
               </div>
             </div>
           );

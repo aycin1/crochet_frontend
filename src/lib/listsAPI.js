@@ -14,7 +14,25 @@ export async function getLists() {
     console.log(error);
   }
 }
-
+export async function getListForPattern(patternID) {
+  try {
+    const response = await fetch(
+      `http://localhost:2501/lists/pattern/${patternID}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
+    if (!response.ok) console.log("Error:", response);
+    const res = await response.json();
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+}
 export async function editList(method, listEdit, setError, setMessage) {
   let res;
   try {

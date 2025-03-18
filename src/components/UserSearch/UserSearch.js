@@ -5,6 +5,7 @@ import {
   searchUsers,
   unfollowUser,
 } from "@/lib/usersAPI";
+import Form from "next/form";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
@@ -27,12 +28,6 @@ export default function UserSearch() {
     settingButtonText();
   }, [message]);
 
-  async function handleSearchClick(e) {
-    e.preventDefault();
-    const { username } = await searchUsers(searchField);
-    setFoundUser(username);
-  }
-
   async function handleFollowClick(e) {
     if (buttonText === "follow") {
       const response = await followUser({ following_user: searchField });
@@ -43,6 +38,12 @@ export default function UserSearch() {
       if (response.message) setMessage(response.message);
       return response;
     }
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const { username } = await searchUsers(searchField);
+    setFoundUser(username);
   }
 
   function returnSearchResult() {
@@ -56,16 +57,18 @@ export default function UserSearch() {
 
   return (
     <div className={styles.searchUserContainer}>
-      <div className={styles.searchInput}>
-        <input
-          type="text"
-          placeholder="Search users"
-          onChange={(e) => setSearchField(e.target.value)}
-        />
-        <button onClick={(e) => handleSearchClick(e)}>Search</button>
-        <div>{foundUser ? returnSearchResult() : "Click search"}</div>
-        {message ? message : null}
-      </div>
+      <Form onSubmit={(e) => handleSubmit(e)}>
+        <div className={styles.searchInput}>
+          <input
+            type="text"
+            placeholder="Username"
+            onChange={(e) => setSearchField(e.target.value)}
+          />
+          <button type="submit">Search users</button>
+          <div>{foundUser ? returnSearchResult() : ""}</div>
+          {message ? message : null}
+        </div>
+      </Form>
     </div>
   );
 }

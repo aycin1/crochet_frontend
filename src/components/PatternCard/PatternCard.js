@@ -3,9 +3,10 @@ import { getPattern } from "@/lib/patternAPI";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import RenderDropdown from "../RenderDropdown/RenderDropdown";
 import styles from "./styles.module.css";
 
-export default function PatternCard({ patternID }) {
+export default function PatternCard({ patternID, list }) {
   const [pattern, setPattern] = useState();
 
   useEffect(() => {
@@ -50,6 +51,7 @@ export default function PatternCard({ patternID }) {
     <div className={styles.patternContainer}>
       <h5>{title()}</h5>
       {thumbnail()}
+      <RenderDropdown patternID={patternID} list={list} />
     </div>
   );
 }

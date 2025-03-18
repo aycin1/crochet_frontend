@@ -1,0 +1,12 @@
+.profile {
+  display: flex;
+}
+
+.posts {
+  display: flex;
+  width: 70%;
+}
+
+.userSearch {
+  float: right;
+}

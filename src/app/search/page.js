@@ -1,6 +1,7 @@
 "use client";
 import { createPatterns } from "@/lib/createPatterns";
 import { getRandomPatterns, searchPatterns } from "@/lib/patternAPI";
+import Form from "next/form";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 
@@ -10,37 +11,35 @@ export default function Search() {
   const [searchField, setSearchField] = useState(null);
 
   useEffect(() => {
-    if (!searchField) {
-      async function fetchRandoms() {
-        const random = await getRandomPatterns();
-        setRandomiser(random);
-      }
-      fetchRandoms();
+    async function fetchRandoms() {
+      const random = await getRandomPatterns();
+      setRandomiser(random);
     }
+    fetchRandoms();
   }, [searchResults]);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (searchField) {
-      const results = await searchPatterns(searchField);
-      setSearchResults(results);
-    }
+    const results = await searchPatterns(searchField);
+    setSearchResults(results);
   }
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Search for patterns!"
-        onChange={(e) => setSearchField(e.target.value)}
-      ></input>
-      <button onClick={(e) => handleSubmit(e)}>Search</button>
+      <Form onSubmit={(e) => handleSubmit(e)}>
+        <input
+          type="text"
+          placeholder="Search for patterns!"
+          onChange={(e) => setSearchField(e.target.value)}
+        ></input>
+        <button type="submit">Search</button>
+      </Form>
       <div className={styles.container}>
-        {searchField
-          ? createPatterns(searchResults, "search")
+        {searchResults
+          ? createPatterns(searchResults)
           : randomiser
-          ? createPatterns(randomiser, "search")
-          : "Could not fetch"}
+          ? createPatterns(randomiser)
+          : "Fetching patterns"}
       </div>
     </div>
   );

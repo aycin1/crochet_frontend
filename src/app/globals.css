@@ -24,12 +24,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(139, 201, 170);
   display: grid;
-  grid-template-rows: 20px 1fr 20px;
+  /* grid-template-rows: 20px 1fr 20px; */
   align-items: center;
   /* justify-items: center; */
   min-height: 10svh;
   padding: 40px;
-  gap: 44px;
+  gap: 24px;
   font-family: var(--font-geist-sans);
 }
 

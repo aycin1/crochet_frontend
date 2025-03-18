@@ -8,5 +8,8 @@
 .listCard {
   align-content: space-between;
   background-color: rgb(157, 214, 181);
+  align-items: center;
+  justify-items: center;
+  /* position: absolute; */
   padding: 10pt;
 }

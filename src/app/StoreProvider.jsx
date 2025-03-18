@@ -16,10 +16,5 @@ export default function StoreProvider({ children }) {
   //     return unsubscribe;
   //   }
   // }, []);
-  return (
-    <Provider store={storeRef.current}>
-      <Header />
-      {children}
-    </Provider>
-  );
+  return <Provider store={storeRef.current}>{children}</Provider>;
 }
