@@ -1,0 +1,31 @@
+.button {
+  margin-left: 5px;
+  gap: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(31, 68, 31);
+  background-color: rgb(198, 231, 220);
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(207, 231, 222);
+  color: rgb(30, 41, 30);
+  border: none;
+  transition: 0s;
+}
+
+.userContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 2px;
+}
+
+.linkAndButtonContainer {
+  display: flex;
+  flex-direction: row;
+}

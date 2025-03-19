@@ -79,3 +79,37 @@ export async function unfollowUser(searchedUser) {
     console.error("Error fetching posts:", error);
   }
 }
+
+export async function getFollowers() {
+  try {
+    const response = await fetch(`http://localhost:2501/users/user/followers`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    });
+    const { followers } = await response.json();
+    if (followers === false) return 0;
+    else {
+      return followers;
+    }
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+  }
+}
+
+export async function getFollowing() {
+  try {
+    const response = await fetch(`http://localhost:2501/users/user/following`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    });
+    const { following } = await response.json();
+    if (following === false) return 0;
+    else {
+      return following;
+    }
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+  }
+}

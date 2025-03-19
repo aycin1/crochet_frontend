@@ -1,10 +1,13 @@
+import Follows from "@/components/Follows/Follows";
 import Posts from "@/components/Posts/Posts";
 import UserSearch from "@/components/UserSearch/UserSearch";
-import { getPostsForUser } from "@/lib/usersAPI";
+import { getFollowers, getFollowing, getPostsForUser } from "@/lib/usersAPI";
 import styles from "./styles.module.css";
 
 export default async function Profile() {
   const { posts, username } = await getPostsForUser();
+  const followers = await getFollowers();
+  const following = await getFollowing();
 
   return (
     <div className={styles.profileWrapper}>
@@ -13,8 +16,13 @@ export default async function Profile() {
         <div className={styles.posts}>
           <Posts posts={posts} />
         </div>
-        <div className={styles.userSearch}>
-          <UserSearch />
+        <div className={styles.usersContainer}>
+          <div className={styles.userSearch}>
+            <UserSearch />
+          </div>
+          <div className={styles.follows}>
+            <Follows followers={followers} following={following} />
+          </div>
         </div>
       </div>
     </div>

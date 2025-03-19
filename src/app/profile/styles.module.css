@@ -4,9 +4,22 @@
 
 .posts {
   display: flex;
-  width: 70%;
+  width: 66%;
+}
+
+.usersContainer {
+  float: right;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(157, 214, 181);
 }
 
 .userSearch {
-  float: right;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.follows {
+  padding-bottom: 20px;
 }
