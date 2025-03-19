@@ -3,12 +3,3 @@
   /* display: flex; */
   /* flex-direction: column; */
 }
-
-.dropdown {
-  display: none;
-}
-
-.patternCard:hover + .dropdown,
-.dropdown:hover {
-  display: inline-block;
-}

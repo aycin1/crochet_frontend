@@ -49,9 +49,13 @@ export default function PatternCard({ patternID, list }) {
 
   return (
     <div className={styles.patternContainer}>
-      <h5>{title()}</h5>
-      {thumbnail()}
-      <RenderDropdown patternID={patternID} list={list} />
+      <div className={styles.patternCard}>
+        <h5>{title()}</h5>
+        {thumbnail()}
+      </div>
+      <div className={styles.dropdown}>
+        <RenderDropdown patternID={patternID} list={list} />
+      </div>
     </div>
   );
 }

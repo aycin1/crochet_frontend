@@ -20,7 +20,7 @@ export default function User({ foundUser, searchField }) {
     settingButtonText();
   }, [foundUser, buttonText, message]);
 
-  async function handleFollowClick(e) {
+  async function handleClick(e) {
     if (buttonText === "follow") {
       const response = await followUser({ following_user: searchField });
       if (response.message) setMessage(response.message);
@@ -38,7 +38,7 @@ export default function User({ foundUser, searchField }) {
         <Link href={`/user/${foundUser}`}>{foundUser}</Link>
       </div>
       <div>
-        <button className={styles.button} onClick={(e) => handleFollowClick(e)}>
+        <button className={styles.button} onClick={(e) => handleClick(e)}>
           {buttonText}
         </button>
       </div>

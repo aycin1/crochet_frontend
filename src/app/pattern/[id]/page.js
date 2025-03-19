@@ -56,42 +56,38 @@ export default async function PatternPage({ params }) {
   }
 
   function thumbnail(pattern) {
-    if (pattern) {
-      if (!pattern.photos || !pattern.photos[0]) return null;
-      const photoUrl = Object.values(pattern.photos)[0].medium_url;
-      return (
-        <div key={pattern.photos.id}>
-          <Image
-            src={photoUrl}
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ height: "auto", width: "50%" }}
-            alt={`Image of pattern ${pattern.photos.id}`}
-          />
-        </div>
-      );
-    }
+    if (!pattern.photos || !pattern.photos[0]) return null;
+    const photoUrl = Object.values(pattern.photos)[0].medium_url;
+    return (
+      <div key={pattern.photos.id}>
+        <Image
+          src={photoUrl}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ height: "auto", width: "50%" }}
+          alt={`Image of pattern ${pattern.photos.id}`}
+        />
+      </div>
+    );
   }
 
   function title(pattern) {
-    if (pattern) {
-      return (
-        <div>
-          <h3>{pattern.name}</h3>
-        </div>
-      );
-    }
+    return (
+      <div>
+        <h3>{pattern.name}</h3>
+      </div>
+    );
   }
 
-  // if (pattern) {
-  return (
-    <div className="pattern-page-container">
-      <div>{title(pattern)}</div>
-      <div>{linkToPattern()}</div>
-      <div>{thumbnail(pattern)}</div>
-      <div>{pattern.notes}</div>
-    </div>
-  );
-  // }
+  if (pattern) {
+    return (
+      <div className="pattern-page-container">
+        <div>{title(pattern)}</div>
+        <div>{linkToPattern()}</div>
+        <div>{thumbnail(pattern)}</div>
+        <div>{pattern.notes}</div>
+      </div>
+    );
+  }
 }

@@ -7,6 +7,7 @@ export default function EditListDropdown({ list, options, handleChange }) {
     for (let option of options) {
       if (option !== list) newArr.push(option);
     }
+    newArr.push("remove");
     return newArr;
   }
   const newOptionsArr = editDropdownOptions();

@@ -30,7 +30,16 @@ export default function RenderDropdown({ patternID, list }) {
 
   async function handleChange(e) {
     const desiredList = e.value;
+
     if (lists !== undefined || lists !== null) {
+      if (desiredList === "remove") {
+        return await editList(
+          "DELETE",
+          { pattern_id: patternID },
+          setError,
+          setMessage
+        );
+      }
       const isInDesiredList = list === desiredList;
       const isInAnyList = Object.values(lists).map((list) => {
         if (list.length) {

@@ -14,6 +14,7 @@ export async function getLists() {
     console.log(error);
   }
 }
+
 export async function getListForPattern(patternID) {
   try {
     const response = await fetch(

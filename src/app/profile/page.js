@@ -5,9 +5,9 @@ import { getFollowers, getFollowing, getPostsForUser } from "@/lib/usersAPI";
 import styles from "./styles.module.css";
 
 export default async function Profile() {
-  const { posts, username } = await getPostsForUser();
   const followers = await getFollowers();
   const following = await getFollowing();
+  const { posts, username } = await getPostsForUser();
 
   return (
     <div className={styles.profileWrapper}>

@@ -1,3 +1,18 @@
 .patternContainer {
   padding: 5pt;
 }
+
+.patternCard {
+  z-index: 0;
+}
+
+.dropdown {
+  display: none;
+}
+
+.patternCard:hover + .dropdown,
+.dropdown:hover {
+  display: inline-block;
+
+  font-size: small;
+}
