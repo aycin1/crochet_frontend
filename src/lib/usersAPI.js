@@ -2,9 +2,7 @@ export async function searchUsers(username) {
   try {
     const response = await fetch(`http://localhost:2501/users/${username}`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       credentials: "include",
     });
     const res = await response.json();

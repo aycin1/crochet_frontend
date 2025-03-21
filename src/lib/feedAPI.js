@@ -15,6 +15,25 @@ export async function getPostsForFeed() {
   }
 }
 
+export async function addPost(method, body) {
+  try {
+    const response = await fetch(`http://localhost:2501/feed`, {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) console.log("Error:", response);
+    const res = await response.json();
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function getLikes(postID) {
   try {
     const response = await fetch(`http://localhost:2501/likes/${postID}`, {
@@ -60,6 +79,41 @@ export async function addOrRemoveLike(postID, method) {
       body: JSON.stringify({ post_id: postID }),
     });
 
+    if (!response.ok) console.log("Error:", response);
+    const res = await response.json();
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getComments(postID) {
+  try {
+    const response = await fetch(`http://localhost:2501/comments/${postID}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    if (!response.ok) console.log("Error:", response);
+    const res = await response.json();
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function postOrDeleteComment(postID, message, method) {
+  try {
+    const response = await fetch(`http://localhost:2501/comments/`, {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ post_id: postID, message: message }),
+    });
     if (!response.ok) console.log("Error:", response);
     const res = await response.json();
     return res;

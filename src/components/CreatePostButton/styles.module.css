@@ -1,0 +1,14 @@
+.addPostButton {
+  gap: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 3px;
+  border: none;
+  font-size: small;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(31, 68, 31);
+  background-color: rgb(198, 231, 220);
+  cursor: pointer;
+}

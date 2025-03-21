@@ -1,6 +1,6 @@
 "use server";
 import { getPattern } from "@/lib/patternAPI";
-import Image from "next/image";
+import thumbnail from "@/lib/thumbnail";
 
 export default async function PatternPage({ params }) {
   const patternID = await params;
@@ -55,23 +55,6 @@ export default async function PatternPage({ params }) {
     }
   }
 
-  function thumbnail(pattern) {
-    if (!pattern.photos || !pattern.photos[0]) return null;
-    const photoUrl = Object.values(pattern.photos)[0].medium_url;
-    return (
-      <div key={pattern.photos.id}>
-        <Image
-          src={photoUrl}
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ height: "auto", width: "50%" }}
-          alt={`Image of pattern ${pattern.photos.id}`}
-        />
-      </div>
-    );
-  }
-
   function title(pattern) {
     return (
       <div>
@@ -82,10 +65,10 @@ export default async function PatternPage({ params }) {
 
   if (pattern) {
     return (
-      <div className="pattern-page-container">
+      <div>
         <div>{title(pattern)}</div>
         <div>{linkToPattern()}</div>
-        <div>{thumbnail(pattern)}</div>
+        <div>{thumbnail(pattern, "medium_url")}</div>
         <div>{pattern.notes}</div>
       </div>
     );

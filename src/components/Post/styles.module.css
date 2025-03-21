@@ -1,0 +1,41 @@
+.postContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.likesAndComments {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+.button {
+  gap: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 11px;
+  padding-right: 11px;
+  border-radius: 3px;
+  border: none;
+  font-size: small;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(31, 68, 31);
+  background-color: rgb(198, 231, 220);
+  cursor: pointer;
+}
+
+.patternCard {
+  float: right;
+}
+
+.caption {
+  font-size: small;
+  display: flex;
+  align-items: center;
+}

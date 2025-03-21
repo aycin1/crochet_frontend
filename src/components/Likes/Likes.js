@@ -1,6 +1,7 @@
 "use client";
 import { addOrRemoveLike, getLikes, isAlreadyLiked } from "@/lib/feedAPI";
 import { useEffect, useState } from "react";
+import styles from "./styles.module.css";
 
 export default function Likes({ postID }) {
   const [likes, setLikes] = useState([]);
@@ -31,7 +32,7 @@ export default function Likes({ postID }) {
   }
 
   return (
-    <button onClick={(e) => handleClick(e)}>
+    <button className={styles.button} onClick={(e) => handleClick(e)}>
       {likes.length ? likes.length : 0}
     </button>
   );

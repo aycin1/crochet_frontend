@@ -26,14 +26,18 @@ export default function Search() {
 
   return (
     <div>
-      <Form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          type="text"
-          placeholder="Search for patterns!"
-          onChange={(e) => setSearchField(e.target.value)}
-        ></input>
-        <button type="submit">Search</button>
-      </Form>
+      <div className={styles.formContainer}>
+        <Form onSubmit={(e) => handleSubmit(e)}>
+          <input
+            className={styles.input}
+            placeholder="Search for patterns!"
+            onChange={(e) => setSearchField(e.target.value)}
+          ></input>
+          <button type="submit" className={styles.button}>
+            Search
+          </button>
+        </Form>
+      </div>
       <div className={styles.container}>
         {searchResults
           ? createPatterns(searchResults)

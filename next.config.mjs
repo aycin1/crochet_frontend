@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -9,6 +9,14 @@ module.exports = {
         pathname: "**",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "ik.imagekit.io",
+        port: "",
+        pathname: "**",
+      },
     ],
   },
 };
+
+export default nextConfig;

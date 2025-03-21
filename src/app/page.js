@@ -1,5 +1,4 @@
 "use server";
-
 import ListDashboard from "@/components/ListDashboard/ListDashboard";
 
 export default async function Home() {
