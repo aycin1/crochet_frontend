@@ -1,17 +1,32 @@
-.profile {
+.profilePage {
   display: flex;
+  flex-direction: column;
+}
+
+.topContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  max-width: 70%;
+}
+
+.profileContainer {
+  display: flex;
+  flex-direction: row;
 }
 
 .posts {
+  flex-grow: 2;
   display: flex;
-  width: 66%;
+  flex-direction: row;
 }
 
-.usersContainer {
-  float: right;
+.users {
   display: flex;
   flex-direction: column;
   background-color: rgb(157, 214, 181);
+  min-height: max-content;
 }
 
 .userSearch {

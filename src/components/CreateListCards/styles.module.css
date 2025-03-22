@@ -3,6 +3,7 @@
   align-content: space-between;
   padding: 10pt;
   flex-direction: row;
+  padding-left: 30pt;
 }
 
 .listCard {
@@ -12,4 +13,5 @@
   justify-items: center;
   /* position: absolute; */
   padding: 10pt;
+  overflow-x: auto;
 }

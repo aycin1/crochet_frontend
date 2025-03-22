@@ -21,7 +21,7 @@ export default function ListDashboard() {
     return (
       <div className={styles.listCardContainer}>
         <div className={styles.patternCards}>
-          {createPatterns(lists[chosenList], "lists", chosenList)}
+          {createPatterns(lists[chosenList], chosenList)}
         </div>
         <div className={styles.searchButton}>
           <SearchButton text="Add more patterns here" />

@@ -6,7 +6,10 @@ export default function thumbnail(pattern, urlSize) {
       return <p>Image not found, please try again</p>;
     const photoUrl = Object.values(pattern.photos)[0][urlSize];
     return (
-      <div key={pattern.photos.id}>
+      <div
+        key={pattern.photos.id}
+        style={{ overflow: "hidden", width: "150px", height: "150px" }}
+      >
         <Image
           src={photoUrl}
           width={0}

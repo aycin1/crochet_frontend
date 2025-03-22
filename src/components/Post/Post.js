@@ -15,10 +15,10 @@ export default function Post({ post }) {
   return (
     <div className={styles.postContainer}>
       {/* INSERT IMAGE FROM IMAGEKIT HERE */}
-      <PatternCard className={styles.patternCard} patternID={post.pattern_id} />
+      <PatternCard patternID={post.pattern_id} />
       <div className={styles.caption}>
-        <div>{post.caption} </div>
-        <div>{post.username}</div>
+        <div>{post.caption}</div>
+        <div className={styles.username}>{post.username}</div>
       </div>
       <div className={styles.likesAndComments}>
         <div className={styles.buttonsContainer}>

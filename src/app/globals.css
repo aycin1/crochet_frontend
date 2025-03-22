@@ -2,6 +2,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  position: static;
 }
 
 body {
@@ -13,6 +14,7 @@ body {
   background-color: rgb(139, 201, 170);
   align-items: center;
   min-height: 10svh;
+  max-width: 90%;
   padding: 40px;
   gap: 24px;
   font-family: var(--font-geist-sans);

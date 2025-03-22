@@ -1,6 +1,7 @@
 import "@/app/page.module.css";
 import { getPattern } from "@/lib/patternAPI";
 import thumbnail from "@/lib/thumbnail";
+import title from "@/lib/title";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import RenderDropdown from "../RenderDropdown/RenderDropdown";
@@ -16,16 +17,10 @@ export default function PatternCard({ patternID, list }) {
     fetchPatterns();
   }, [patternID]);
 
-  function title() {
-    if (pattern) {
-      return pattern.name;
-    }
-  }
-
   return (
     <div className={styles.patternContainer}>
       <div className={styles.patternCard}>
-        <h5>{title()}</h5>
+        <h5>{title(pattern)}</h5>
         <Link href={`/pattern/${patternID}`}>
           {thumbnail(pattern, "small_url")}
         </Link>

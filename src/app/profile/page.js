@@ -11,22 +11,24 @@ export default async function Profile() {
   const { posts, username } = await getPostsForUser();
 
   return (
-    <div>
-      <CreatePostButton />
-      <div className={styles.profileContainer}>
+    <div className={styles.profilePage}>
+      <div className={styles.topContainer}>
         <h4>{username}</h4>
-        <div className={styles.profile}>
-          <div className={styles.posts}>
-            <Posts posts={posts} />
+        <CreatePostButton />
+      </div>
+      <div className={styles.profileContainer}>
+        {/* <div className={styles.profile}> */}
+        <div className={styles.posts}>
+          <Posts posts={posts} />
+        </div>
+        <div className={styles.users}>
+          <div className={styles.userSearch}>
+            <UserSearch />
           </div>
-          <div className={styles.usersContainer}>
-            <div className={styles.userSearch}>
-              <UserSearch />
-            </div>
-            <div className={styles.follows}>
-              <Follows followers={followers} following={following} />
-            </div>
+          <div className={styles.follows}>
+            <Follows followers={followers} following={following} />
           </div>
+          {/* </div> */}
         </div>
       </div>
     </div>

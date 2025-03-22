@@ -1,6 +1,7 @@
 "use server";
 import { getPattern } from "@/lib/patternAPI";
 import thumbnail from "@/lib/thumbnail";
+import title from "@/lib/title";
 
 export default async function PatternPage({ params }) {
   const patternID = await params;
@@ -55,18 +56,10 @@ export default async function PatternPage({ params }) {
     }
   }
 
-  function title(pattern) {
-    return (
-      <div>
-        <h3>{pattern.name}</h3>
-      </div>
-    );
-  }
-
   if (pattern) {
     return (
       <div>
-        <div>{title(pattern)}</div>
+        <h3>{title(pattern)}</h3>
         <div>{linkToPattern()}</div>
         <div>{thumbnail(pattern, "medium_url")}</div>
         <div>{pattern.notes}</div>

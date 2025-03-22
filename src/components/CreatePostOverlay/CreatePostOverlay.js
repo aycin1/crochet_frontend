@@ -1,5 +1,5 @@
 "use client";
-import { addPost } from "@/lib/feedAPI";
+import { addEditOrDeletePost } from "@/lib/feedAPI";
 import Form from "next/form";
 import { useState } from "react";
 import ImageUpload from "../ImageUpload/ImageUpload";
@@ -21,28 +21,27 @@ export default function CreatePostOverlay({ isClicked }) {
     };
     if (!chosenPatternID)
       return setMessage("You must choose a pattern to create a post");
-    return await addPost("POST", body);
+    return await addEditOrDeletePost("POST", body);
   }
 
   return (
     <div>
-      {!chosenPatternID ? (
-        <SelectPattern
-          isClicked={isClicked}
-          setChosenPatternID={setChosenPatternID}
-        />
-      ) : (
-        <button onClick={() => setChosenPatternID(null)}>
-          choose a different pattern
-        </button>
-      )}
       <Form onSubmit={(e) => handleSubmit(e)}>
+        {!chosenPatternID ? (
+          <SelectPattern
+            isClicked={isClicked}
+            setChosenPatternID={setChosenPatternID}
+          />
+        ) : (
+          <button onClick={() => setChosenPatternID(null)}>
+            back to pattern selection
+          </button>
+        )}
         <input
           type="text"
           placeholder="  Caption"
           onChange={(e) => setCaption(e.target.value)}
         ></input>
-
         <ImageUpload />
         <button type="submit">Post</button>
       </Form>

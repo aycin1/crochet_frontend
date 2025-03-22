@@ -15,7 +15,7 @@ export async function getPostsForFeed() {
   }
 }
 
-export async function addPost(method, body) {
+export async function addEditOrDeletePost(method, body) {
   try {
     const response = await fetch(`http://localhost:2501/feed`, {
       method: method,

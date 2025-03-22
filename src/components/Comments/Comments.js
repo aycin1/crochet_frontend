@@ -52,9 +52,9 @@ export default function Comments({ postID }) {
 
   return (
     <div className={styles.commentsContainer}>
-      {comments.length ? mapComments() : ""}
+      <div>{comments.length ? mapComments() : ""}</div>
       <div className={styles.message}>{message ? message : null}</div>
-      <AddComment postID={postID} setMessage={setMessage} />{" "}
+      <AddComment postID={postID} setMessage={setMessage} />
     </div>
   );
 }
