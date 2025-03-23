@@ -1,27 +1,24 @@
 import Image from "next/image";
 
-export default function thumbnail(pattern, urlSize) {
+export default function thumbnail(pattern, urlSize, style) {
   if (pattern) {
     if (!pattern.photos || !pattern.photos[0])
       return <p>Image not found, please try again</p>;
     const photoUrl = Object.values(pattern.photos)[0][urlSize];
     return (
-      <div
+      <Image
+        src={photoUrl}
         key={pattern.photos.id}
-        style={{ overflow: "hidden", width: "150px", height: "150px" }}
-      >
-        <Image
-          src={photoUrl}
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{
-            width: "100%",
-            height: "auto",
-          }}
-          alt={`Image of pattern ${pattern.photos.id}`}
-        />
-      </div>
+        style={style}
+        width={0}
+        height={0}
+        sizes="100vw"
+        // style={{
+        //   width: "100%",
+        //   height: "auto",
+        // }}
+        alt={`Image of pattern ${pattern.photos.id}`}
+      />
     );
   }
 }

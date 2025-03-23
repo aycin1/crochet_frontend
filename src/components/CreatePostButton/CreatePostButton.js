@@ -11,11 +11,17 @@ export default function CreatePostButton() {
   }
 
   return (
-    <div>
+    <div className={styles.buttonAndOverlayContainer}>
       <button className={styles.addPostButton} onClick={(e) => handleClick(e)}>
         Add a post
       </button>
-      {isClicked ? <CreatePostOverlay isClicked={isClicked} /> : ""}
+      <div className={styles.overlay}>
+        {isClicked ? (
+          <CreatePostOverlay isClicked={isClicked} handleClick={handleClick} />
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 }

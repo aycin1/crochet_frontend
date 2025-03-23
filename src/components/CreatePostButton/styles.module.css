@@ -11,4 +11,22 @@
   color: rgb(31, 68, 31);
   background-color: rgb(198, 231, 220);
   cursor: pointer;
+  align-self: baseline;
+}
+
+.overlay {
+  z-index: 999;
+  position: fixed;
+  max-height: 500px;
+  max-width: 70%;
+  min-width: 70%;
+  background-color: rgba(245, 245, 245, 0.952);
+  align-self: center;
+  overflow-y: auto;
+}
+
+.buttonAndOverlayContainer {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
 }

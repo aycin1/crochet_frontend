@@ -18,6 +18,7 @@ body {
   padding: 40px;
   gap: 24px;
   font-family: var(--font-geist-sans);
+  z-index: 0;
 }
 
 a {

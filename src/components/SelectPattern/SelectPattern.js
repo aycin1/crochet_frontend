@@ -40,15 +40,24 @@ export default function SelectPattern({ isClicked, setChosenPatternID }) {
           key={pattern.id || pattern.pattern_id}
           onClick={() => setChosenPatternID(pattern.id || pattern.pattern_id)}
         >
-          {thumbnail(pattern, "thumbnail_url")}
+          {thumbnail(pattern, "thumbnail_url", {
+            width: "80px",
+            height: "auto",
+            maxHeight: "75px",
+          })}
         </div>
       ));
     }
   }
 
   return (
-    <div className={styles.imagesContainer}>
-      {patterns ? renderImages() : ""}
+    <div className={styles.selectPatternContainer}>
+      <p style={{ fontSize: "12pt" }}>
+        Select a pattern (from your lists) to link your post to
+      </p>
+      <div className={styles.imagesContainer}>
+        {patterns ? renderImages() : ""}
+      </div>
     </div>
   );
 }

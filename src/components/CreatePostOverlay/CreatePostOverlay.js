@@ -4,8 +4,9 @@ import Form from "next/form";
 import { useState } from "react";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import SelectPattern from "../SelectPattern/SelectPattern";
+import styles from "./styles.module.css";
 
-export default function CreatePostOverlay({ isClicked }) {
+export default function CreatePostOverlay({ isClicked, handleClick }) {
   const [chosenPatternID, setChosenPatternID] = useState(null);
   const [caption, setCaption] = useState("");
   const [fileName, setFileName] = useState("");
@@ -25,27 +26,34 @@ export default function CreatePostOverlay({ isClicked }) {
   }
 
   return (
-    <div>
-      <Form onSubmit={(e) => handleSubmit(e)}>
-        {!chosenPatternID ? (
-          <SelectPattern
-            isClicked={isClicked}
-            setChosenPatternID={setChosenPatternID}
-          />
-        ) : (
-          <button onClick={() => setChosenPatternID(null)}>
-            back to pattern selection
-          </button>
-        )}
-        <input
-          type="text"
-          placeholder="  Caption"
-          onChange={(e) => setCaption(e.target.value)}
-        ></input>
-        <ImageUpload />
-        <button type="submit">Post</button>
-      </Form>
+    <Form onSubmit={(e) => handleSubmit(e)} className={styles.overlayContainer}>
+      <button
+        className={styles.closeOverlayButton}
+        onClick={(e) => handleClick(e)}
+      >
+        x
+      </button>
+      {!chosenPatternID ? (
+        <SelectPattern
+          isClicked={isClicked}
+          setChosenPatternID={setChosenPatternID}
+        />
+      ) : (
+        <button onClick={() => setChosenPatternID(null)}>
+          back to pattern selection
+        </button>
+      )}
+      <ImageUpload />
+      <input
+        type="text"
+        className={styles.input}
+        placeholder="  Caption"
+        onChange={(e) => setCaption(e.target.value)}
+      ></input>
+      <button className={styles.submitButton} type="submit">
+        Post
+      </button>
       {message ? message : null}
-    </div>
+    </Form>
   );
 }

@@ -13,8 +13,8 @@ export default async function Profile() {
   return (
     <div className={styles.profilePage}>
       <div className={styles.topContainer}>
-        <h4>{username}</h4>
         <CreatePostButton />
+        <h4 className={styles.username}>{username}</h4>
       </div>
       <div className={styles.profileContainer}>
         {/* <div className={styles.profile}> */}

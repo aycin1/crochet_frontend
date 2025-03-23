@@ -22,7 +22,6 @@
 .button:hover {
   background-color: rgb(207, 231, 222);
   color: rgb(30, 41, 30);
-  border: none;
   transition: 0s;
 }
 
