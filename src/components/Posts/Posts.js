@@ -45,20 +45,29 @@ export default function Posts({ posts }) {
               ) : (
                 ""
               )}
+              {/* CHECK USERNAME OF LOGGED IN USER HERE */}
+              {post.username === "mols12" ? (
+                <button
+                  className={styles.button}
+                  onClick={(e) => toggleInputField(e)}
+                >
+                  edit
+                </button>
+              ) : (
+                ""
+              )}
+            </Form>
+            {post.username === "mols12" ? (
               <button
                 className={styles.button}
-                onClick={(e) => toggleInputField(e)}
+                value={post.post_id}
+                onClick={(e) => handleClick(e)}
               >
-                edit
+                x
               </button>
-            </Form>
-            <button
-              className={styles.button}
-              value={post.post_id}
-              onClick={(e) => handleClick(e)}
-            >
-              x
-            </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       ));

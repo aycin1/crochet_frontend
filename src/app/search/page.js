@@ -24,6 +24,20 @@ export default function Search() {
     setSearchResults(results);
   }
 
+  const thumbnailOptions = {
+    url: "medium_url",
+    style: {
+      width: "100%",
+      height: "auto",
+      maxWidth: "250px",
+      minWidth: "250px",
+      overflow: "hidden",
+      margin: "-30px -10px -20px -20px",
+    },
+    maxHeight: "250px",
+    withLink: true,
+  };
+
   return (
     <div>
       <div className={styles.formContainer}>
@@ -40,9 +54,9 @@ export default function Search() {
       </div>
       <div className={styles.container}>
         {searchResults
-          ? createPatterns(searchResults)
+          ? createPatterns(searchResults, thumbnailOptions)
           : randomiser
-          ? createPatterns(randomiser)
+          ? createPatterns(randomiser, thumbnailOptions)
           : "Fetching patterns"}
       </div>
     </div>

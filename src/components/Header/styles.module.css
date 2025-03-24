@@ -12,3 +12,7 @@
 .links {
   padding-right: 25px;
 }
+
+.links:hover {
+  font-weight: bold;
+}

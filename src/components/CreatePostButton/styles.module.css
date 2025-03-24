@@ -2,8 +2,8 @@
   gap: 8px;
   padding-top: 8px;
   padding-bottom: 8px;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 50px;
+  padding-right: 50px;
   border-radius: 3px;
   border: none;
   font-size: small;
@@ -12,6 +12,12 @@
   background-color: rgb(198, 231, 220);
   cursor: pointer;
   align-self: baseline;
+}
+
+.addPostButton:hover {
+  background-color: rgb(225, 250, 242);
+  color: rgb(30, 41, 30);
+  transition: 0s;
 }
 
 .overlay {

@@ -19,6 +19,7 @@ body {
   gap: 24px;
   font-family: var(--font-geist-sans);
   z-index: 0;
+  color: rgb(27, 56, 27);
 }
 
 a {

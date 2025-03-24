@@ -2,7 +2,7 @@
 import { getPattern } from "@/lib/patternAPI";
 import thumbnail from "@/lib/thumbnail";
 import title from "@/lib/title";
-
+import styles from "./styles.module.css";
 export default async function PatternPage({ params }) {
   const patternID = await params;
   const pattern = (await getPattern(patternID.id)).pattern;
@@ -55,14 +55,35 @@ export default async function PatternPage({ params }) {
       );
     }
   }
+  const thumbnailOptions = {
+    url: "medium2_url",
+    style: {
+      width: "100%",
+      height: "auto",
+      maxWidth: "400px",
+      minWidth: "400px",
+    },
+    maxHeight: "none",
+    withLink: false,
+  };
 
   if (pattern) {
     return (
       <div>
         <h3>{title(pattern)}</h3>
         <div>{linkToPattern()}</div>
-        <div>{thumbnail(pattern, "medium_url")}</div>
-        <div>{pattern.notes}</div>
+        <div className={styles.container}>
+          <div>{pattern.notes}</div>
+          <div>
+            {thumbnail(
+              pattern,
+              thumbnailOptions.url,
+              thumbnailOptions.style,
+              thumbnailOptions.maxHeight,
+              thumbnailOptions.withLink
+            )}
+          </div>
+        </div>
       </div>
     );
   }

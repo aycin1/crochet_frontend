@@ -1,14 +1,27 @@
 .listButtons {
   color: rgb(31, 68, 31);
   background-color: rgb(198, 231, 220);
+  padding: 15px;
+  justify-self: center;
+  width: 90%;
+  overflow: hidden;
 }
 
-/* .listCardContainer {
-} */
+.listCardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .patternCards {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-/* .searchButton {
-} */
+.searchButton {
+  align-self: flex-end;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  margin-right: 40px;
+}

@@ -2,11 +2,14 @@
   display: flex;
   justify-content: space-between;
   font-size: small;
+  padding: 0px 2px 2px 0px;
 }
 
 .comment {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 2;
 }
 
 .commentUsername {
@@ -15,6 +18,18 @@
 
 .deleteButton {
   display: none;
+  gap: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 3px;
+  border: none;
+  font-size: small;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(31, 68, 31);
+  background-color: rgb(198, 231, 220);
+  cursor: pointer;
 }
 
 .commentContainer:hover .deleteButton,
@@ -27,4 +42,10 @@
   font-size: small;
   color: rgba(82, 92, 73, 0.721);
   background-color: rgb(209, 243, 223);
+}
+
+.deleteButton:hover {
+  background-color: rgb(225, 250, 242);
+  color: rgb(30, 41, 30);
+  transition: 0s;
 }

@@ -1,5 +1,6 @@
 "use client";
 import { getComments, postOrDeleteComment } from "@/lib/feedAPI";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import AddComment from "../AddComment/AddComment";
 import styles from "./styles.module.css";
@@ -31,7 +32,9 @@ export default function Comments({ postID }) {
           <div className={styles.comment}>
             <div>{comment.message}</div>
             <div className={styles.commentUsername}>
-              {comment.comment_username}
+              <Link href={`/user/${comment.comment_username}`}>
+                {comment.comment_username}
+              </Link>
             </div>
           </div>
           {comment.comment_username === "mols12" ? (
@@ -52,7 +55,7 @@ export default function Comments({ postID }) {
 
   return (
     <div className={styles.commentsContainer}>
-      <div>{comments.length ? mapComments() : ""}</div>
+      <div>{comments?.length ? mapComments() : ""}</div>
       <div className={styles.message}>{message ? message : null}</div>
       <AddComment postID={postID} setMessage={setMessage} />
     </div>

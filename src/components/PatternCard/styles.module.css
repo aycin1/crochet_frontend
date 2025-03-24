@@ -1,6 +1,10 @@
 .patternContainer {
   padding: 5pt;
   display: flex;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+  align-self: center;
 }
 
 .dropdown {
@@ -9,11 +13,15 @@
 }
 
 .patternCard {
-  /* width: 200px; */
+  max-width: 220px;
+  min-width: 220px;
+  align-self: center;
+  justify-items: center;
+  overflow: hidden;
 }
 
 .patternCard:hover + .dropdown,
 .dropdown:hover {
-  display: inline;
+  display: flex;
   font-size: small;
 }

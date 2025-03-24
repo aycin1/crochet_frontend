@@ -18,13 +18,25 @@ export default function ListDashboard() {
   }, [chosenList]);
 
   function patternsWithSearchButton() {
+    const thumbnailOptions = {
+      url: "medium_url",
+      style: {
+        width: "100%",
+        height: "auto",
+        maxWidth: "150px",
+        minWidth: "150px",
+        overflow: "hidden",
+      },
+      maxHeight: "150px",
+      withLink: true,
+    };
     return (
       <div className={styles.listCardContainer}>
-        <div className={styles.patternCards}>
-          {createPatterns(lists[chosenList], chosenList)}
-        </div>
         <div className={styles.searchButton}>
-          <SearchButton text="Add more patterns here" />
+          <SearchButton text="add more patterns here" />
+        </div>
+        <div className={styles.patternCards}>
+          {createPatterns(lists[chosenList], thumbnailOptions, chosenList)}
         </div>
       </div>
     );
@@ -40,7 +52,9 @@ export default function ListDashboard() {
       {chosenList && lists[chosenList].length ? (
         patternsWithSearchButton()
       ) : chosenList ? (
-        <SearchButton text="This list is empty, click here to search patterns!" />
+        <div className={styles.searchButton}>
+          <SearchButton text="this list is empty, click here to search patterns!" />
+        </div>
       ) : (
         "Please select a list"
       )}

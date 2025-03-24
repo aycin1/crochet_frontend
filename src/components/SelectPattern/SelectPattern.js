@@ -34,17 +34,25 @@ export default function SelectPattern({ isClicked, setChosenPatternID }) {
 
   function renderImages() {
     if (urlArray.length) {
+      const thumbnailOptions = {
+        url: "small_url",
+        style: { width: "80px", height: "auto" },
+        maxHeight: "80px",
+        withLink: false,
+      };
       return urlArray.map((pattern) => (
         <div
           className={styles.image}
           key={pattern.id || pattern.pattern_id}
           onClick={() => setChosenPatternID(pattern.id || pattern.pattern_id)}
         >
-          {thumbnail(pattern, "thumbnail_url", {
-            width: "80px",
-            height: "auto",
-            maxHeight: "75px",
-          })}
+          {thumbnail(
+            pattern,
+            thumbnailOptions.url,
+            thumbnailOptions.style,
+            thumbnailOptions.maxHeight,
+            thumbnailOptions.withLink
+          )}
         </div>
       ));
     }

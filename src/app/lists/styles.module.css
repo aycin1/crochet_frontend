@@ -1,4 +1,3 @@
-/* .listCards {
-  display: flex;
-  flex-direction: row;
-} */
+.listCards {
+  display: inline;
+}

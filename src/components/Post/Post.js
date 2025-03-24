@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import Comments from "../Comments/Comments";
 import Likes from "../Likes/Likes";
@@ -15,10 +16,26 @@ export default function Post({ post }) {
   return (
     <div className={styles.postContainer}>
       {/* INSERT IMAGE FROM IMAGEKIT HERE */}
-      <PatternCard patternID={post.pattern_id} />
+      <div className={styles.patternCardContainer}>
+        <PatternCard
+          patternID={post.pattern_id}
+          thumbnailOptions={{
+            url: "thumbnail_url",
+            style: {
+              width: "100%",
+              height: "auto",
+              maxWidth: "70px",
+            },
+            maxHeight: "70px",
+            withLink: true,
+          }}
+        />
+      </div>
       <div className={styles.caption}>
         <div>{post.caption}</div>
-        <div className={styles.username}>{post.username}</div>
+        <div className={styles.username}>
+          <Link href={`/user/${post.username}`}>{post.username}</Link>
+        </div>
       </div>
       <div className={styles.likesAndComments}>
         <div className={styles.buttonsContainer}>

@@ -1,17 +1,37 @@
-.patternCards {
+.listsContainer {
   display: flex;
-  align-content: space-between;
-  padding: 10pt;
+  flex-direction: column;
+}
+
+.patternCards {
+  max-width: 100%;
+  display: flex;
   flex-direction: row;
-  padding-left: 30pt;
 }
 
 .listCard {
-  align-content: space-between;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   background-color: rgb(157, 214, 181);
   align-items: center;
   justify-items: center;
-  /* position: absolute; */
-  padding: 10pt;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
   overflow-x: auto;
+}
+
+.listCardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchButtonContainer {
+  padding-top: 15px;
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
 }
